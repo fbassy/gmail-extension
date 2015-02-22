@@ -1,0 +1,23 @@
+{
+  "name": "Unleashed in Gmail",
+  "description": "Show Unleashed information while using Gmail",
+  "version": "2",
+  "manifest_version": 2,
+  "background" : {
+    "scripts": ["background.js"]
+  },
+  "permissions": [
+    "webRequest",
+    "http://*/", "https://*/",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://mail.google.com/*"],
+      "js": ["jquery.min.js", "contentscript.js"],
+      "run_at": "document_end",
+      "all_frames" : false
+    }
+  ],
+  "options_page": "options.html"
+}
