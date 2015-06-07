@@ -1,7 +1,7 @@
 {
   "name": "Unleashed in Gmail",
   "description": "Show Unleashed information while using Gmail",
-  "version": "2",
+  "version": "0.3",
   "manifest_version": 2,
   "background" : {
     "scripts": ["background.js"]
@@ -19,5 +19,8 @@
       "all_frames" : false
     }
   ],
-  "options_page": "options.html"
+  "options_page": "options.html",
+  "icons": {
+      "128": "icon128.png"
+    }
 }
