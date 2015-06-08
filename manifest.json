@@ -15,6 +15,7 @@
     {
       "matches": ["*://mail.google.com/*"],
       "js": ["jquery.min.js", "hmac-sha256.js", "enc-base64-min.js", "contentscript.js"],
+      "css": ["font-awesome.min.css"],
       "run_at": "document_end",
       "all_frames" : false
     }
@@ -22,5 +23,6 @@
   "options_page": "options.html",
   "icons": {
     "128": "icon128.png"
-  }
+  },
+  "web_accessible_resources": ["fonts/*"]
 }

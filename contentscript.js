@@ -2,6 +2,13 @@ var UNL_DEFAULT_HOST_NAME = "https://api.unleashedsoftware.com";
 var CUSTOMER_RET = "/Customers";
 console.log("~=Unleashed Extension Loaded=~");
 
+var fa = document.createElement('style');
+    fa.type = 'text/css';
+    fa.textContent = '@font-face { font-family: FontAwesome; src: url("'
+        + chrome.extension.getURL('fonts/fontawesome-webfont.woff?v=4.0.3')
+        + '"); }';
+document.head.appendChild(fa);
+
 /*
  * Update event binding after each http request.
  */
@@ -73,7 +80,8 @@ console.log("~=Unleashed Extension Loaded=~");
         console.log("Hash64:" + hash64)
         xhr =
         $.ajax({
-          url: url,
+          // url: url,
+          url: "https://api.unleashedsoftware.com/Customers?Email=test@test.co.nz",
           dataType: "json",
           headers: {
             'Accept':'application/json',
@@ -88,18 +96,25 @@ console.log("~=Unleashed Extension Loaded=~");
               var member = data;
               console.log("member");
               $('#rightPanel').removeClass('Loading');
-              $('#rightPanel').html("<table style='border: 1px solid #e1e7e9; border-radius:4px 4px 0 0;margin: 10PX 0 4PX 0; padding: 4px 6px 8px 10px; background: #fff;'><tr><td align='center' style='padding-bottom:5px;'><a onclick='document.getElementById(\"rightPanel\").style.display=\"none\";' style='float: right; color: #e11e39; cursor: pointer;'>x</a><div style width='180px;font-size: 14px;overflow: hidden;text-overflow: ellipsis;color:#e11e39;' title='" + checkNullInfo(member.Items[0].CustomerName) + "'>" + checkNullInfo(member.Items[0].CustomerName)  + "</div>" + "</br></td></tr>" 
+              $('#rightPanel').html("<table style='border: 2px solid #363838; border-radius:2%;margin: 10PX 0 4PX 0; padding: 4px 6px 8px 10px; background: #fff;'><tr><td align='center' style='padding-bottom:5px;'><a onclick='document.getElementById(\"rightPanel\").style.display=\"none\";' style='float: right; color: #E11E39; cursor: pointer;'><i class='fa fa-close'></i></a><div style='width:180px;font-size: 22px;overflow: hidden;text-overflow: ellipsis;color:#E11E39;' title='" + checkNullInfo(member.Items[0].CustomerName) + "'>" + checkNullInfo(member.Items[0].CustomerName)  + "</div>" + "</br></td></tr>" 
                 + "<tr><td><div style='float:left; width: 80px; color: #363838;'>Code:</div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].CustomerCode) + "</div></br></td></tr>" 
                 + "<tr><td><div style='float:left; width: 80px; color: #363838;'>Mail:</div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].Email) + "</div></br></td></tr>"
-                + "<tr><td><div style='float:left; width: 80px; color: #363838;'>Phone Number: </div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].PhoneNumber) + "</div></br></td></tr>"
-                + "<tr><td><div style='float:left; width: 80px; color: #363838;'>Type: </div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].CustomerType) + "</div></br></td></tr>");
+                + "<tr><td><div style='float:left; width: 80px; color: #363838;'>Type: </div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].CustomerType) + "</div></br></td></tr>"
+                + "<tr><td><div style='float:left; width: 80px; color: #363838;'><i class='fa fa-phone'></i> </div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].PhoneNumber) + "</div></br></td></tr>"
+                + "<tr><td><div style='float:left; width: 80px; color: #363838;'><i class='fa fa-fax'></i> </div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].FaxNumber) + "</div></br></td></tr>"
+                + "<tr><td><div style='float:left; width: 80px; color: #363838;'><i class='fa fa-mobile'></i> </div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].MobileNumber) + "</div></br></td></tr>"
+                + "<tr><td><div style='float:left; width: 80px; color: #363838;'>Street: </div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].CustomerType) + "</div></br></td></tr>"
+                + "<tr><td><div style='float:left; width: 80px; color: #363838;'>Suburb: </div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].CustomerType) + "</div></br></td></tr>"
+                + "<tr><td><div style='float:left; width: 80px; color: #363838;'>City: </div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].CustomerType) + "</div></br></td></tr>"
+                + "<tr><td><div style='float:left; width: 80px; color: #363838;'>Postal Code: </div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].CustomerType) + "</div></br></td></tr>"
+                + "<tr><td><div style='float:left; width: 80px; color: #363838;'>Country: </div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].CustomerType) + "</div></br></td></tr>");
                                     // + "<tr><td style='padding: 8px 0 0 ;'><img style='width: 200px; height: 200px' src='http://'></td></tr>");
               // $('#rightPanel').append("<table style='border: 1PX SOLID #D8D8D8; margin: 10PX 0 4PX 0; padding: 4px 6px 8px 10px; background: rgba(0, 0, 0, 0.06);'><tr><td><div style='float:left; width: 202px; color: #333;'>DO something</div></td></tr>"
                                       // + "<tr><td><div ><input id='postActivityId' style='width: 200px' type='text'></div></td></tr></table>");
 }
 }).fail(function (data, status, er) {
   console.log("error: " + data + " status: " + status + " er:" + er);
-  $('#rightPanel').text("Can not get information");
+  $('#rightPanel').text("Oops! That email doesn't exist.");
 });
 }
 }, 1500);
