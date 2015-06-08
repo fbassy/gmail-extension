@@ -73,7 +73,7 @@ document.head.appendChild(fa);
     setTimeout(function () { // Only process hover handler if mouse over email 2 seconds. This avoid crazy mouse moving
       if (obj.hasClass('active')) {
         // Mark loading data
-        $('#rightPanel').show().addClass("Loading").html("<div style='width:200px;color: #333;border: 1PX SOLID #D8D8D8; margin: 10PX 0 4PX 0; padding: 4px 6px 8px 10px; background: rgba(0, 0, 0, 0.06);'><img width='60px' height='60px' style='text-align:center;' src='http://design.unl.sh/guide/v1.1/img/load-grey-120.gif'></div>");
+        $('#rightPanel').show().addClass("Loading").html("<div style='width:200px;color: #333;border: 1PX SOLID #fff; margin: 10PX 0 4PX 0; padding: 4px 6px 8px 10px; background:#fff'><img width='60px' height='60px' style='display:block;margin:auto;' src='http://design.unl.sh/guide/v1.1/img/load-white-120.gif'></div>");
         var hash = CryptoJS.HmacSHA256(param, keyValue);
         console.log("Hash:" + hash)
         var hash64 = CryptoJS.enc.Base64.stringify(hash);
@@ -97,17 +97,35 @@ document.head.appendChild(fa);
               console.log("member");
               $('#rightPanel').removeClass('Loading');
               $('#rightPanel').html("<table style='border: 2px solid #363838; border-radius:2%;margin: 10PX 0 4PX 0; padding: 4px 6px 8px 10px; background: #fff;'><tr><td align='center' style='padding-bottom:5px;'><a onclick='document.getElementById(\"rightPanel\").style.display=\"none\";' style='float: right; color: #E11E39; cursor: pointer;'><i class='fa fa-close'></i></a><div style='width:180px;font-size: 22px;overflow: hidden;text-overflow: ellipsis;color:#E11E39;' title='" + checkNullInfo(member.Items[0].CustomerName) + "'>" + checkNullInfo(member.Items[0].CustomerName)  + "</div>" + "</br></td></tr>" 
-                + "<tr><td><div style='float:left; width: 80px; color: #363838;'>Code:</div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].CustomerCode) + "</div></br></td></tr>" 
-                + "<tr><td><div style='float:left; width: 80px; color: #363838;'>Mail:</div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].Email) + "</div></br></td></tr>"
-                + "<tr><td><div style='float:left; width: 80px; color: #363838;'>Type: </div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].CustomerType) + "</div></br></td></tr>"
-                + "<tr><td><div style='float:left; width: 80px; color: #363838;'><i class='fa fa-phone'></i> </div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].PhoneNumber) + "</div></br></td></tr>"
-                + "<tr><td><div style='float:left; width: 80px; color: #363838;'><i class='fa fa-fax'></i> </div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].FaxNumber) + "</div></br></td></tr>"
-                + "<tr><td><div style='float:left; width: 80px; color: #363838;'><i class='fa fa-mobile'></i> </div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].MobileNumber) + "</div></br></td></tr>"
-                + "<tr><td><div style='float:left; width: 80px; color: #363838;'>Street: </div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].CustomerType) + "</div></br></td></tr>"
-                + "<tr><td><div style='float:left; width: 80px; color: #363838;'>Suburb: </div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].CustomerType) + "</div></br></td></tr>"
-                + "<tr><td><div style='float:left; width: 80px; color: #363838;'>City: </div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].CustomerType) + "</div></br></td></tr>"
-                + "<tr><td><div style='float:left; width: 80px; color: #363838;'>Postal Code: </div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].CustomerType) + "</div></br></td></tr>"
-                + "<tr><td><div style='float:left; width: 80px; color: #363838;'>Country: </div><div style='float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].CustomerType) + "</div></br></td></tr>");
+                + "<tr><td><div style='float:left; width: 70px; color: #363838; text-align:right;'>Code </div>"
+                + "<div style='padding-left: 15px; float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].CustomerCode) + "</div></br></td></tr>" 
+                + "<tr><td><div style='float:left; width: 70px; color: #363838; text-align:right;'>Mail </div>"
+                + "<div style='padding-left: 15px; float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].Email) + "</div></br></td></tr>"
+                + "<tr><td><div style='float:left; width: 70px; color: #363838; text-align:right;'>Type </div>"
+                + "<div style='padding-left: 15px; float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].CustomerType) + "</div></br></td></tr>"
+                + "<tr><td><div style='padding-top:10px'></div>" 
+                + "<tr><td><div style='float:left; width: 70px; color: #363838; text-align:right;'><i class='fa fa-phone'></i> </div>" 
+                + "<div style='padding-left: 15px; float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].PhoneNumber) + "</div></br></td></tr>"
+                + "<tr><td><div style='float:left; width: 70px; color: #363838; text-align:right;'><i class='fa fa-fax'></i> </div>" 
+                + "<div style='padding-left: 15px; float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].FaxNumber) + "</div></br></td></tr>"
+                + "<tr><td><div style='float:left; width: 70px; color: #363838; text-align:right;'><i class='fa fa-mobile'></i> </div>" 
+                + "<div style='padding-left: 15px; float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].MobileNumber) + "</div></br></td></tr>"
+                + "<tr><td><div style='padding-top:10px'></div>" 
+                + "<tr><td><div style='float:left; width: 70px; color: #363838; text-align:right;'>Street </div>" 
+                + "<div style='padding-left: 15px; float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].Addresses[0].StreetAddress) + "</div></br></td></tr>"
+                + "<tr><td><div style='float:left; width: 70px; color: #363838; text-align:right;'>Suburb </div>" 
+                + "<div style='padding-left: 15px; float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].Addresses[0].Suburb) + "</div></br></td></tr>"
+                + "<tr><td><div style='float:left; width: 70px; color: #363838; text-align:right;'>City </div>" 
+                + "<div style='padding-left: 15px; float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].Addresses[0].City) + "</div></br></td></tr>"
+                + "<tr><td><div style='float:left; width: 70px; color: #363838; text-align:right;'>Region </div>" 
+                + "<div style='padding-left: 15px; float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].Addresses[0].Region) + "</div></br></td></tr>"
+                + "<tr><td><div style='float:left; width: 70px; color: #363838; text-align:right;'>Postal Code </div>" 
+                + "<div style='padding-left: 15px; float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].Addresses[0].PostalCode) + "</div></br></td></tr>"
+                + "<tr><td><div style='float:left; width: 70px; color: #363838; text-align:right;'>Country </div>"  
+                + "<div style='padding-left: 15px; float: left; width: 122px; word-wrap: break-word;color:#999;'>" + checkNullInfo(member.Items[0].Addresses[0].Country) + "</div></br></td></tr>"
+                 + "<tr><td><div style='padding-top:10px'></div>" 
+                + "<tr><td><img width='210px' style='padding-top:10px;display:block;margin:auto;' src='https://www.unleashedsoftware.com/unleashed-html/images/unleashed.png'></td></tr>"
+                + "</table>");
                                     // + "<tr><td style='padding: 8px 0 0 ;'><img style='width: 200px; height: 200px' src='http://'></td></tr>");
               // $('#rightPanel').append("<table style='border: 1PX SOLID #D8D8D8; margin: 10PX 0 4PX 0; padding: 4px 6px 8px 10px; background: rgba(0, 0, 0, 0.06);'><tr><td><div style='float:left; width: 202px; color: #333;'>DO something</div></td></tr>"
                                       // + "<tr><td><div ><input id='postActivityId' style='width: 200px' type='text'></div></td></tr></table>");
