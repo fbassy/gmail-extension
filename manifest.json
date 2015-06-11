@@ -1,10 +1,12 @@
 {
   "name": "Unleashed in Gmail",
   "description": "Show Unleashed information while using Gmail",
+  "short_name": "Unleashed-Gmail",
   "version": "0.1",
   "manifest_version": 2,
+  "homepage_url": "http://www.unleashedsoftware.com",
   "background" : {
-    "scripts": ["background.js"]
+    "scripts": ["js/background.js"]
   },
   "permissions": [
     "webRequest",
@@ -14,15 +16,17 @@
   "content_scripts": [
     {
       "matches": ["*://mail.google.com/*"],
-      "js": ["jquery.min.js", "hmac-sha256.js", "enc-base64-min.js", "contentscript.js"],
-      "css": ["font-awesome.min.css"],
+      "js": ["js/jquery.min.js", "js/hmac-sha256.js", "js/enc-base64-min.js", "js/contentscript.js"],
+      "css": ["css/font-awesome.min.css","css/options.css"],
       "run_at": "document_end",
       "all_frames" : false
     }
   ],
   "options_page": "options.html",
   "icons": {
-    "128": "icon128.png"
+    "16": "images/box_16.png",
+    "48": "images/box_48.png",
+    "128": "images/box_128.png"
   },
   "web_accessible_resources": ["fonts/*","images/*"]
 }
